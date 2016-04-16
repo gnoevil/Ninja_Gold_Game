@@ -1,0 +1,38 @@
+<h1>Your Gold: </h1>
+<div id="goldCounter"><%= @gold %></div>
+<form class="box b1" action="/rpg/farm" method="post" >
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<h2>Farm</h2>
+	<h3>(earns 10-20 gold)</h3>
+	<input class="goldButton" type="submit" value="Find Gold!">
+</form>
+<form class="box b2" action="/rpg/cave" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<h2>Cave</h2>
+	<h3>(earns 5-10 gold)</h3>
+	<input class="goldButton" type="submit" value="Find Gold!">
+</form>
+<form class="box b3" action="/rpg/house" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<h2>House</h2>
+	<h3>(earns 2-5 gold)</h3>
+	<input class="goldButton" type="submit" value="Find Gold!">
+</form>
+<form class="box b4" action="/rpg/casino" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<h2>Casino!</h2>
+	<h3>(earns/takes 0-50 gold)</h3>
+	<input class="goldButton" type="submit" value="Find Gold!">
+</form>
+<h2>Activities:</h2>
+<div id="activities">
+<% if @messages %>
+	<% @messages.each do |msg| %>
+	<p class="<%= msg[1] %>"><%= msg[0] %></p>
+	<% end %>
+<% end %>
+</div>
+<form action="/rpg/reset" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<input class="refresh" type="submit" name="reset" value="Start Over!">
+</form>
